@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Applications · Ladcemas-Lite</title>
+  <style>
+    :root { color-scheme: light dark; font: 16px/1.5 system-ui, sans-serif; }
+    body { margin: 0; background: Canvas; color: CanvasText; }
+    main { width: min(42rem, calc(100% - 2rem)); margin: 4rem auto; }
+    h1 { margin: 0 0 1.5rem; font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.05; letter-spacing: -.04em; }
+    h2 { margin: 0 0 .25rem; font-size: 1.5rem; }
+    .subtitle { margin-top: 0; opacity: .7; }
+    ul { list-style: none; padding: 0; display: grid; gap: .75rem; }
+    a { display: block; padding: 1rem 1.25rem; border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: .75rem; color: LinkText; text-decoration: none; }
+    a:hover, a:focus-visible { outline: 2px solid LinkText; outline-offset: 2px; }
+    .empty { padding: 1rem; border-radius: .5rem; background: color-mix(in srgb, CanvasText 7%, Canvas); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Ladcemas-Lite</h1>
+    <h2>Applications</h2>
+    <p class="subtitle">Installed on this Aggregare server</p>
+    {% if applications %}
+      <ul>
+        {% for application in applications %}
+          <li><a href="{{ application.url }}">{{ application.name }} <span aria-hidden="true">↗</span></a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty">{{ message }}</p>
+    {% endif %}
+  </main>
+</body>
+</html>
